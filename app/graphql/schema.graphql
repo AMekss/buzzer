@@ -1,4 +1,4 @@
-type Conversation {
+type MessagingConversation {
   description: String
   messagesConnection(
     """
@@ -20,30 +20,30 @@ type Conversation {
     Returns the last _n_ elements from the list.
     """
     last: Int
-  ): MessageConnection!
-  participants: [Participant!]!
+  ): MessagingMessageConnection!
+  participants: [MessagingParticipant!]!
   title: String!
 }
 
-type Message {
-  from: Participant!
+type MessagingMessage {
+  from: MessagingParticipant!
   isUrgent: Boolean!
   text: String!
 }
 
 """
-The connection type for Message.
+The connection type for MessagingMessage.
 """
-type MessageConnection {
+type MessagingMessageConnection {
   """
   A list of edges.
   """
-  edges: [MessageEdge]
+  edges: [MessagingMessageEdge]
 
   """
   A list of nodes.
   """
-  nodes: [Message]
+  nodes: [MessagingMessage]
 
   """
   Information to aid in pagination.
@@ -54,7 +54,7 @@ type MessageConnection {
 """
 An edge in a connection.
 """
-type MessageEdge {
+type MessagingMessageEdge {
   """
   A cursor for use in pagination.
   """
@@ -63,7 +63,13 @@ type MessageEdge {
   """
   The item at the end of the edge.
   """
-  node: Message
+  node: MessagingMessage
+}
+
+type MessagingParticipant {
+  connections: [MessagingConversation!]!
+  fullName: String!
+  messageCount: Int!
 }
 
 """
@@ -91,12 +97,6 @@ type PageInfo {
   startCursor: String
 }
 
-type Participant {
-  connections: [Conversation!]!
-  fullName: String!
-  messageCount: Int!
-}
-
 type Query {
-  conversation(title: String!): Conversation
+  conversation(title: String!): MessagingConversation
 }
