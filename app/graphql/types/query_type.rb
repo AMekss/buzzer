@@ -1,6 +1,6 @@
 module Types
   class QueryType < Types::Base::Object
-    field :conversation, ConversationType, null: true do
+    field :conversation, Types::Messaging::ConversationType, null: true do
       argument :title, String, required: true
     end
 
