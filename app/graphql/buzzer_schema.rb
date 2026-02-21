@@ -4,5 +4,5 @@ class BuzzerSchema < GraphQL::Schema
 
   use GraphQL::Dataloader
 
-  connections.add(ActiveRecord::Relation, GraphQL::Pagination::ActiveRecordRelationConnection)
+  connections.add(ActiveRecord::Relation, GraphqlStableConnection)
 end
