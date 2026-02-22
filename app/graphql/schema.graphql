@@ -90,6 +90,7 @@ input MutationsMessagingWriteMessageInput {
   """
   clientMutationId: String
   conversationTitle: String
+  isUrgent: Boolean
   text: String!
 }
 
