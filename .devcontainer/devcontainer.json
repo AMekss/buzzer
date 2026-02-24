@@ -1,0 +1,9 @@
+{
+  "name": "Buzzer",
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "buzzer",
+  "workspaceFolder": "/rails",
+  "initializeCommand": "docker compose up buzzer -d",
+  "overrideCommand": "docker compose exec buzzer bash",
+  "remoteUser": "root",
+}
