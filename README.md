@@ -1,24 +1,30 @@
-# README
+# GraphQL in the Real World (code examples)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple Rails application implementing a GraphQL API containing the code examples used in the "GraphQL in the Real World" presentation.
 
-Things you may want to cover:
+Buzzer is a fictional messaging app where participants can join conversations and exchange messages — a minimal domain to demonstrate real-world GraphQL patterns.
 
-* Ruby version
+### Dependencies
+- [Docker](https://docs.docker.com/desktop/)
+- [Docker Compose](https://docs.docker.com/compose/)
 
-* System dependencies
+### Install
+Use the following commands to install:
+```shell
+docker compose build
+docker compose run --rm -it buzzer bash
+rails db:reset
+exit
+```
 
-* Configuration
+### Start
+To run the application, use the following command:
+```shell
+docker compose up buzzer
+```
 
-* Database creation
+This will start the Rails application inside a Docker container and set up port forwarding for port 3000 on your host (make sure that port is free).
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Explore
+- GraphiQL playground: [http://localhost:3000/graphiql](http://localhost:3000/graphiql)
+- A Postman collection is also included at `postman/Buzzer API.postman_collection.json`

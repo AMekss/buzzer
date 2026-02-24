@@ -1,0 +1,68 @@
+{
+  "info": {
+    "_postman_id": "2f4f0fe2-7368-4933-847f-1adf0c7ce2fa",
+    "name": "Buzzer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18535494"
+  },
+  "item": [
+    {
+      "name": "conversation",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query conversation($title: String!) {\n    conversation(title: $title) {\n        title\n        messagesConnection(first: 10) {\n            nodes {\n                from {\n                    fullName\n                }\n                text\n            }\n            pageInfo {\n                startCursor\n                endCursor\n            }\n        }\n    }\n}",
+            "variables": "{\n    \"title\": \"Ruby community chat\"\n    \n}"
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:3000/graphql",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "3000",
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "writeMessagingMessage",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "mutation WriteMessage($input: MutationsMessagingWriteMessageInput!){\n    writeMessagingMessage(input: $input) {\n        __typename\n        from {\n            fullName\n        }\n        text\n    }\n}",
+            "variables": "{\n    \"input\": {\n        \"conversationTitle\": \"Ruby community chat\",\n        \"text\": \"Hey There!\"\n    }\n}"
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:3000/graphql",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "3000",
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
