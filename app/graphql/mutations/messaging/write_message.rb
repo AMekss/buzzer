@@ -14,7 +14,7 @@ module Mutations
         conversation.messages.create!(text: text, participant: context[:current_user], urgent: is_urgent)
 
       rescue => err
-        GraphqlUserError.maybe(err)
+        raise GraphqlUserError.maybe(err)
       end
     end
   end
